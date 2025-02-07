@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackVibe - Boutique en ligne</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <div class="logo">
+            <h1>BlackVibe</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Produits</a></li>
+                <li><a href="#">Panier</a></li>
+                <li><a href="#">Compte</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Bannière d'accueil -->
+    <section id="banniere">
+        <h2>Les meilleures tendances sont ici!</h2>
+        <p>Découvrez notre collection exclusive</p>
+        <button>Voir les produits</button>
+    </section>
+
+    <!-- Liste des produits -->
+    <section id="produits" class="produits">
+        <div class="carte-produit">
+            <img src="produit1.jpg" alt="Produit 1">
+            <h3>T-shirt Design</h3>
+            <p class="prix">29.99€</p>
+            <button onclick="ajouterAuPanier('T-shirt Design', 29.99)">Ajouter au panier</button>
+        </div>
+
+        <div class="carte-produit">
+            <img src="produit2.jpg" alt="Produit 2">
+            <h3>Casquette Casual</h3>
+            <p class="prix">19.99€</p>
+            <button onclick="ajouterAuPanier('Casquette Casual', 19.99)">Ajouter au panier</button>
+        </div>
+
+        <div class="carte-produit">
+            <img src="produit3.jpg" alt="Produit 3">
+            <h3>Sac à dos Sportif</h3>
+            <p class="prix">49.99€</p>
+            <button onclick="ajouterAuPanier('Sac à dos Sportif', 49.99)">Ajouter au panier</button>
+        </div>
+    </section>
+
+    <!-- Panier -->
+    <div id="panier" class="panier">
+        <h3>Votre Panier</h3>
+        <ul id="liste-panier"></ul>
+        <p id="prix-total">Total : 0€</p>
+        <button id="commander" onclick="passerALaCaisse()">Passer à la caisse</button>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2025 BlackVibe - Tous droits réservés</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html><ALOASK-SEPARATE-EDITORS>/* Réinitialisation des styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* En-tête */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header .logo h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Bannière d'accueil */
+#banniere {
+    background: url('banniere.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+#banniere h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#banniere p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#banniere button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#banniere button:hover {
+    background-color: #2980b9;
+}
+
+/* Liste des produits */
+#produits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.carte-produit {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carte-produit img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.carte-produit h3 {
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.carte-produit .prix {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.carte-produit button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.carte-produit button:hover {
+    background-color: #2980b9;
+}
+
+/* Panier */
+.panier {
+    position: fixed;
+    top: 20%;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+
+#liste-panier {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+#prix-total {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#commander {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+#commander:hover {
+    background-color: #2ecc71;
+}
+
+/* Pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}<ALOASK-SEPARATE-EDITORS>let panier = [];
+let total = 0;
+
+function ajouterAuPanier(nomProduit, prixProduit) {
+    panier.push({ nom: nomProduit, prix: prixProduit });
+    total += prixProduit;
+    mettreAJourPanier();
+}
+
+function mettreAJourPanier() {
+    const listePanier = document.getElementById('liste-panier');
+    const prixTotal = document.getElementById('prix-total');
+    
+    // Vider le panier actuel
+    listePanier.innerHTML = '';
+    
+    // Ajouter les éléments du panier
+    panier.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nom} - ${item.prix}€`;
+        listePanier.appendChild(li);
+    });
+    
+    prixTotal.textContent = `Total : ${total}€`;
+}
+
+function passerALaCaisse() {
+    if (panier.length > 0) {
+        alert(`Merci pour votre achat! Total : ${total}€`);
+        panier = [];
+        total = 0;
+        mettreAJourPanier();
+    } else {
+        alert("Votre panier est vide!");
+    }
+}
